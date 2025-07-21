@@ -87,8 +87,36 @@ cd test
 dotnet test
 
 # Run tests with verbose output
-dotnet test --verbosity normal
+dotnet test --logger "console;verbosity=normal"
+
+# Run tests with detailed output and trx file
+dotnet test --logger trx --logger "console;verbosity=detailed"
+
+# Run a specific test
+dotnet test --filter "Run_VoidMethod_ExecutesSuccessfully"
+
+# Run all X.Run() tests
+dotnet test --filter "XTests"
+
+# Watch mode - automatically run tests when files change
+dotnet test --watch
 ```
+
+### VS Code Testing Integration
+
+The project is configured for optimal VS Code testing experience with **NUnit 4.0.1**:
+
+1. **Test Explorer**: Tests automatically appear in the Test Explorer panel
+2. **CodeLens**: Run/Debug buttons appear above each test method
+3. **Debugging**: Set breakpoints and debug tests directly
+4. **Live Testing**: Use watch mode for continuous testing
+5. **Test Results**: Comprehensive reporting with trx and html output
+
+**VS Code Commands:**
+- `Ctrl+Shift+P` → "Test: Run All Tests"
+- `Ctrl+Shift+P` → "Test: Debug All Tests" 
+- `Ctrl+Shift+P` → "Tasks: Run Task" → "test" (run tests)
+- `Ctrl+Shift+P` → "Tasks: Run Task" → "test-watch" (continuous testing)
 
 ## Adding New Brain Teasers
 

@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscodeintellicode-csharp",
+        "ms-vscode.test-adapter-converter",
+        "derivitec-ltd.vscode-dotnet-adapter",
+        "formulahendry.dotnet-test-explorer",
+        "jmrog.vscode-nuget-package-manager",
+        "kreativ-software.csharpextensions",
+        "ms-vscode.vscode-json",
+        "bradlc.vscode-tailwindcss",
+        "editorconfig.editorconfig"
+    ]
+}

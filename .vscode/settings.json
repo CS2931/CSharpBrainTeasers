@@ -1,0 +1,16 @@
+{
+    "dotnet.defaultSolution": "CSharpBrainTeasers.sln",
+    "dotnet.testProjectPaths": [
+        "test/CSharpBrainTeasers.Tests.csproj"
+    ],
+    "omnisharp.testRunSettings": "./test/CSharpBrainTeasers.Tests.csproj",
+    "dotnet.unitTests.runSettingsPath": "./test/runsettings.xml",
+    "testExplorer.useNativeTesting": true,
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "files.exclude": {
+        "**/bin": true,
+        "**/obj": true
+    },
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true
+}

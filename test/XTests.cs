@@ -1,9 +1,10 @@
 using System.IO;
-using Xunit;
+using NUnit.Framework;
 using CSharpBrainTeasers;
 
 namespace CSharpBrainTeasers.Tests;
 
+[TestFixture]
 public class XTests
 {
     // Helper method to capture console output
@@ -24,7 +25,7 @@ public class XTests
         }
     }
 
-    [Fact]
+    [Test]
     public void Run_VoidMethod_ExecutesSuccessfully()
     {
         // Arrange & Act
@@ -34,124 +35,124 @@ public class XTests
         });
 
         // Assert
-        Assert.Contains("=== Execution Analysis ===", output);
-        Assert.Contains("XTests.TestVoidMethod(Int32 number = 5, String text = \"test\")", output);
-        Assert.Contains("✅ Execution completed successfully!", output);
-        Assert.Contains("📋 Result: void", output);
-        Assert.Contains("Method executed with: 5, test", output);
+        Assert.That(output, Does.Contain("=== Execution Analysis ==="));
+        Assert.That(output, Does.Contain("XTests.TestVoidMethod(Int32 number = 5, String text = \"test\")"));
+        Assert.That(output, Does.Contain("✅ Execution completed successfully!"));
+        Assert.That(output, Does.Contain("📋 Result: void"));
+        Assert.That(output, Does.Contain("Method executed with: 5, test"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionWithReturnValue_ReturnsCorrectResult()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestAddNumbers(10, 20));
-            Assert.Equal(30, result);
+            Assert.That(result, Is.EqualTo(30));
         });
 
         // Assert
-        Assert.Contains("=== Execution Analysis ===", output);
-        Assert.Contains("XTests.TestAddNumbers(Int32 a = 10, Int32 b = 20)", output);
-        Assert.Contains("✅ Execution completed successfully!", output);
-        Assert.Contains("📋 Result: 30(Int32)", output);
+        Assert.That(output, Does.Contain("=== Execution Analysis ==="));
+        Assert.That(output, Does.Contain("XTests.TestAddNumbers(Int32 a = 10, Int32 b = 20)"));
+        Assert.That(output, Does.Contain("✅ Execution completed successfully!"));
+        Assert.That(output, Does.Contain("📋 Result: 30(Int32)"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionWithStringReturn_FormatsStringCorrectly()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestStringConcat("Hello", "World"));
-            Assert.Equal("Hello World", result);
+            Assert.That(result, Is.EqualTo("Hello World"));
         });
 
         // Assert
-        Assert.Contains("XTests.TestStringConcat(String first = \"Hello\", String second = \"World\")", output);
-        Assert.Contains("📋 Result: Hello World(String)", output);
+        Assert.That(output, Does.Contain("XTests.TestStringConcat(String first = \"Hello\", String second = \"World\")"));
+        Assert.That(output, Does.Contain("📋 Result: Hello World(String)"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionWithArrayReturn_FormatsArrayCorrectly()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestCreateArray(3));
-            Assert.Equal([1, 2, 3], result);
+            Assert.That(result, Is.EqualTo(new[] { 1, 2, 3 }));
         });
 
         // Assert
-        Assert.Contains("XTests.TestCreateArray(Int32 size = 3)", output);
-        Assert.Contains("📋 Result: [1, 2, 3] (Length: 3)(Int32[])", output);
+        Assert.That(output, Does.Contain("XTests.TestCreateArray(Int32 size = 3)"));
+        Assert.That(output, Does.Contain("📋 Result: [1, 2, 3] (Length: 3)(Int32[])"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionWithListReturn_FormatsListCorrectly()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestCreateList("a", "b", "c"));
-            Assert.Equal(["a", "b", "c"], result);
+            Assert.That(result, Is.EqualTo(new List<string> { "a", "b", "c" }));
         });
 
         // Assert
-        Assert.Contains("XTests.TestCreateList(String item1 = \"a\", String item2 = \"b\", String item3 = \"c\")", output);
-        Assert.Contains("📋 Result: [a, b, c](List`1)", output);
+        Assert.That(output, Does.Contain("XTests.TestCreateList(String item1 = \"a\", String item2 = \"b\", String item3 = \"c\")"));
+        Assert.That(output, Does.Contain("📋 Result: [a, b, c](List`1)"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionWithNullReturn_HandlesNullCorrectly()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestReturnNull());
-            Assert.Null(result);
+            Assert.That(result, Is.Null);
         });
 
         // Assert
-        Assert.Contains("XTests.TestReturnNull()", output);
-        Assert.Contains("📋 Result: null(String)", output);
+        Assert.That(output, Does.Contain("XTests.TestReturnNull()"));
+        Assert.That(output, Does.Contain("📋 Result: null(String)"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionThatThrowsException_CatchesAndReportsException()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestThrowException("Test error"));
-            Assert.Equal(0, result); // Should return default value
+            Assert.That(result, Is.EqualTo(0)); // Should return default value
         });
 
         // Assert
-        Assert.Contains("XTests.TestThrowException(String message = \"Test error\")", output);
-        Assert.Contains("❌ Exception occurred during execution!", output);
-        Assert.Contains("🚨 Exception: Test error", output);
-        Assert.Contains("ArgumentException", output);
-        Assert.Contains("📍 Stack trace", output);
+        Assert.That(output, Does.Contain("XTests.TestThrowException(String message = \"Test error\")"));
+        Assert.That(output, Does.Contain("❌ Exception occurred during execution!"));
+        Assert.That(output, Does.Contain("🚨 Exception: Test error"));
+        Assert.That(output, Does.Contain("ArgumentException"));
+        Assert.That(output, Does.Contain("📍 Stack trace"));
     }
 
-    [Fact]
+    [Test]
     public void Run_FunctionWithComplexParameters_FormatsParametersCorrectly()
     {
         // Arrange & Act
         var output = CaptureConsoleOutput(() =>
         {
             var result = X.Run(() => TestComplexParameters(42, 'A', true, null));
-            Assert.Equal("42-A-True-null", result);
+            Assert.That(result, Is.EqualTo("42-A-True-null"));
         });
 
         // Assert
-        Assert.Contains("XTests.TestComplexParameters(Int32 number = 42, Char letter = 'A', Boolean flag = True, object nullValue = null)", output);
-        Assert.Contains("📋 Result: 42-A-True-null(String)", output);
+        Assert.That(output, Does.Contain("XTests.TestComplexParameters(Int32 number = 42, Char letter = 'A', Boolean flag = True, object nullValue = null)"));
+        Assert.That(output, Does.Contain("📋 Result: 42-A-True-null(String)"));
     }
 
-    [Fact]
+    [Test]
     public void Run_VoidMethodWithNoParameters_ExecutesCorrectly()
     {
         // Arrange & Act
@@ -161,13 +162,13 @@ public class XTests
         });
 
         // Assert
-        Assert.Contains("XTests.TestNoParameters()", output);
-        Assert.Contains("✅ Execution completed successfully!", output);
-        Assert.Contains("📋 Result: void", output);
-        Assert.Contains("No parameters method executed", output);
+        Assert.That(output, Does.Contain("XTests.TestNoParameters()"));
+        Assert.That(output, Does.Contain("✅ Execution completed successfully!"));
+        Assert.That(output, Does.Contain("📋 Result: void"));
+        Assert.That(output, Does.Contain("No parameters method executed"));
     }
 
-    [Fact]
+    [Test]
     public void Run_TimingMeasurement_IncludesExecutionTime()
     {
         // Arrange & Act
@@ -177,11 +178,11 @@ public class XTests
         });
 
         // Assert
-        Assert.Contains("⏱️  Execution time:", output);
-        Assert.Contains("ms", output);
+        Assert.That(output, Does.Contain("⏱️  Execution time:"));
+        Assert.That(output, Does.Contain("ms"));
         // Should be at least 100ms due to the delay
         var timingLine = output.Split('\n').FirstOrDefault(line => line.Contains("Execution time:"));
-        Assert.NotNull(timingLine);
+        Assert.That(timingLine, Is.Not.Null);
     }
 
     // Test helper methods
