@@ -1,12 +1,12 @@
 # CSharpBrainTeasers.Tests
 
-This directory contains comprehensive unit tests for the C# Brain Teasers project, specifically testing the **X.Run()** execution analysis framework using **NUnit 4.0.1**.
+This directory contains comprehensive unit tests for the C# Brain Teasers project, specifically testing the **Lab.Run()** execution analysis framework using **NUnit 4.0.1**.
 
 ## 📁 Project Structure
 
 ```
 test/
-├── XTests.cs                           # Main test suite for X.Run() framework
+├── XTests.cs                           # Main test suite for Lab.Run() framework
 ├── GlobalUsings.cs                     # Global using statements
 ├── CSharpBrainTeasers.Tests.csproj     # Test project file with NUnit packages
 ├── packages.config                     # NuGet package configuration
@@ -26,9 +26,9 @@ We use **NUnit 4.0.1** (latest version) for our testing framework, which provide
 
 ## 🎯 Test Coverage
 
-### **X.Run() Framework Tests (10 Tests)**
+### **Lab.Run() Framework Tests (10 Tests)**
 
-Our test suite comprehensively validates the X.Run() execution analysis framework:
+Our test suite comprehensively validates the Lab.Run() execution analysis framework:
 
 #### **Core Functionality Tests**
 - ✅ **Void Method Execution** - Tests methods with no return value
@@ -163,7 +163,7 @@ private string CaptureConsoleOutput(Action action)
 }
 ```
 
-This helper method captures `Console.WriteLine()` output from the X.Run() framework for verification in tests.
+This helper method captures `Console.WriteLine()` output from the Lab.Run() framework for verification in tests.
 
 ### **Test Method Pattern**
 
@@ -176,7 +176,7 @@ public void TestName_Scenario_ExpectedOutcome()
     // Arrange & Act
     var output = CaptureConsoleOutput(() =>
     {
-        var result = X.Run(() => TestMethod(parameters));
+        var result = Lab.Run(() => TestMethod(parameters));
         Assert.That(result, Is.EqualTo(expectedValue));
     });
 

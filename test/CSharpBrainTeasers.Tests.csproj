@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\src\X.cs" Link="X.cs" />
+    <Compile Include="..\src\Lab.cs" Link="Lab.cs" />
   </ItemGroup>
-
 </Project>

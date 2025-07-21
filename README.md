@@ -1,10 +1,10 @@
 # C# Brain Teasers Collection
 
-A .NET console application for implementing and testing various C# brain teasers and coding challenges, featuring the powerful **X.Run()** execution analysis framework.
+A .NET console application for implementing and testing various C# brain teasers and coding challenges, featuring the powerful **Lab.Run()** execution analysis framework.
 
 ## ✨ Key Features
 
-- **🔍 Automatic Method Analysis**: The `X.Run()` framework automatically extracts and displays method signatures, parameters, and execution details
+- **🔍 Automatic Method Analysis**: The `Lab.Run()` framework automatically extracts and displays method signatures, parameters, and execution details
 - **⏱️ Performance Tracking**: Built-in execution timing and performance monitoring
 - **🎨 Rich Console Output**: Beautiful ANSI-colored terminal output with emojis and formatting
 - **🚨 Exception Handling**: Comprehensive error reporting with stack traces
@@ -21,7 +21,7 @@ CSharpBrainTeasers/
 │       ├── ExampleTeasers.cs   # Example brain teasers
 │       └── NothingToSeeHere.cs # Additional challenges
 ├── test/                       # Unit tests
-│   ├── XTests.cs              # Comprehensive X.Run() tests
+│   ├── XTests.cs              # Comprehensive Lab.Run() tests
 │   ├── GlobalUsings.cs        # Global using statements
 │   └── CSharpBrainTeasers.Tests.csproj # Test project file
 ├── CSharpBrainTeasers.csproj   # Main project file
@@ -29,21 +29,21 @@ CSharpBrainTeasers/
 └── README.md                   # This file
 ```
 
-## 🚀 The X.Run() Framework
+## 🚀 The Lab.Run() Framework
 
-The heart of this project is the `X.Run()` execution analysis framework that provides automatic method introspection and beautiful output formatting.
+The heart of this project is the `Lab.Run()` execution analysis framework that provides automatic method introspection and beautiful output formatting.
 
 ### Basic Usage
 
 ```csharp
 // Automatically analyzes and executes any method
-X.Run(() => YourMethod(param1, param2));
+Lab.Run(() => YourMethod(param1, param2));
 
 // Works with void methods
-X.Run(() => SomeVoidMethod(42, "test"));
+Lab.Run(() => SomeVoidMethod(42, "test"));
 
 // Works with methods that return values
-var result = X.Run(() => CalculateSomething(10, 20));
+var result = Lab.Run(() => CalculateSomething(10, 20));
 ```
 
 ### Example Output
@@ -63,7 +63,7 @@ Solution: 5
 === End Analysis ===
 ```
 
-### Features of X.Run()
+### Features of Lab.Run()
 
 - **🔍 Automatic Parameter Detection**: Extracts parameter names and values
 - **🎯 Type Information**: Shows parameter and return types
@@ -95,7 +95,7 @@ dotnet test --logger trx --logger "console;verbosity=detailed"
 # Run a specific test
 dotnet test --filter "Run_VoidMethod_ExecutesSuccessfully"
 
-# Run all X.Run() tests
+# Run all Lab.Run() tests
 dotnet test --filter "XTests"
 
 # Watch mode - automatically run tests when files change
@@ -120,16 +120,16 @@ The project is configured for optimal VS Code testing experience with **NUnit 4.
 
 ## Adding New Brain Teasers
 
-### Method 1: Using X.Run() (Recommended)
+### Method 1: Using Lab.Run() (Recommended)
 ```csharp
 static void Main(string[] args)
 {
     Console.WriteLine("=== C# Brain Teasers Collection ===");
     Console.WriteLine();
 
-    // Simply wrap your method call with X.Run()
-    X.Run(() => YourBrainTeaser(input1, input2));
-    X.Run(() => AnotherTeaser("test", 42));
+    // Simply wrap your method call with Lab.Run()
+    Lab.Run(() => YourBrainTeaser(input1, input2));
+    Lab.Run(() => AnotherTeaser("test", 42));
 }
 
 static void YourBrainTeaser(int a, int b)
@@ -146,7 +146,7 @@ Add static methods to existing brain teaser categories in the `src/BrainTeasers/
 1. Create a new file in the `src/BrainTeasers/` folder
 2. Use the namespace: `CSharpBrainTeasers.BrainTeasers`
 3. Create a static class with static methods
-4. Call your methods from `Program.cs` using `X.Run()`
+4. Call your methods from `Program.cs` using `Lab.Run()`
 
 ## Testing Your Code
 
@@ -167,7 +167,7 @@ The project includes comprehensive unit tests that demonstrate:
 # Run a specific test
 dotnet test --filter "Run_VoidMethod_ExecutesSuccessfully"
 
-# Run all X.Run() tests
+# Run all Lab.Run() tests
 dotnet test --filter "XTests"
 ```
 
@@ -205,12 +205,12 @@ dotnet test
 
 ## 💡 Tips
 
-- **Use X.Run()** for all method executions to get beautiful analysis output
+- **Use Lab.Run()** for all method executions to get beautiful analysis output
 - Use clear method names that describe the problem
 - Add XML documentation comments (`///`) to explain each brain teaser
 - Print both the problem description and solution within your methods
 - Test with multiple examples where appropriate
-- The X.Run() framework automatically handles timing, formatting, and error reporting
+- The Lab.Run() framework automatically handles timing, formatting, and error reporting
 
 ## 🎯 Example Brain Teaser
 
@@ -220,8 +220,8 @@ static void Main(string[] args)
     Console.WriteLine("=== C# Brain Teasers Collection ===");
     Console.WriteLine();
 
-    // The X.Run framework automatically analyzes this call
-    X.Run(() => FibonacciSequence(10));
+    // The Lab.Run framework automatically analyzes this call
+    Lab.Run(() => FibonacciSequence(10));
 }
 
 static void FibonacciSequence(int n)

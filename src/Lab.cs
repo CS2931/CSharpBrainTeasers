@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 
 namespace CSharpBrainTeasers;
 
-public static class X
+public static class Lab
 {
     public static T? Run<T>(Expression<Func<T>> expression)
     {
