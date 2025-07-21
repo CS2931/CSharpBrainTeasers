@@ -25,7 +25,7 @@ CSharpBrainTeasers/
 ## Adding New Brain Teasers
 
 ### Method 1: Add to existing categories
-Add static methods to `ArrayProblems.cs`, `StringProblems.cs`, or `MathProblems.cs`.
+Add static methods to existing brain teaser categories or add new category files
 
 ### Method 2: Create new categories
 1. Create a new file in the `BrainTeasers` folder

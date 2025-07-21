@@ -16,9 +16,6 @@ class Program
 
         // Alternatively, run static methods within programme.cs here
         Example1();
-
-        Console.WriteLine("Press any key to exit...");
-        Console.ReadKey();
     }
     
     static void Example1()

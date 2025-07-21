@@ -1,6 +1,7 @@
 @echo off
 if "%1"=="me" (
     echo Running C# Brain Teasers...
+    dotnet build
     dotnet run
 ) else (
     echo Usage: tease me
