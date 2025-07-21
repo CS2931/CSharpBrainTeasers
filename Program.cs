@@ -9,20 +9,22 @@ class Program
     {
         Console.WriteLine("=== C# Brain Teasers Collection ===");
         Console.WriteLine();
-        
-        // Run brain teasers here from the brain teasers namespace
-        // ExampleTeasers.FibonacciSequence();
-        // ExampleTeasers.PrimeChecker();
 
-        // Alternatively, run static methods within programme.cs here
-        Example1();
+        X.Run(() => ExampleDivideNumbers(10, 2));
     }
     
-    static void Example1()
+    static void ExampleDivideNumbers(int a, int b)
     {
-        Console.WriteLine("Brain Teaser #1: Your Custom Problem");
-        Console.WriteLine("Solution: ...");
-        Console.WriteLine();
+        Console.WriteLine("Brain Teaser #1: Divide Numbers");
+        try
+        {
+            double result = a / b;
+            Console.WriteLine($"Solution: {result}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 }
 
